@@ -334,7 +334,7 @@ const PatientManagementSystem = () => {
     <div className="container">
       <div className="header">
         <img
-          src="/hospital-management-system-logo-light.png"
+          src="./hospital-management-system/public/hospital-management-system-logo-light.png"
           alt="Hospital Management System Logo"
           className="logo"
           style={{
