@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # or your default branch (e.g., master)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22.13.0'  # Use the version of Node.js you're working with
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        run: |
+          npm install gh-pages --save-dev  # Install the gh-pages package
+          npm run deploy  # This will deploy the app to GitHub Pages using gh-pages
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Uses the secret you added earlier
